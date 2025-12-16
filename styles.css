@@ -1,6 +1,6 @@
 :root {
   --bg: #ffffff;
-  --page-bg: #f5f7f9;
+  --page-bg: #f6f7f8;
   --text: #111827;
   --muted: #4b5563;
   --line: #e5e7eb;
@@ -24,14 +24,14 @@ a:hover { opacity: 0.85; }
 
 header {
   background: #ffffff;
-  border-bottom: 1px solid var(--line);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid #e0e2e5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 nav {
   max-width: 900px;
   margin: 0 auto;
-  padding: 14px 24px;
+  padding: 15px 24px;
   display: flex;
   gap: 18px;
   flex-wrap: wrap;
@@ -41,7 +41,7 @@ nav a {
   text-decoration: none;
   color: var(--muted);
   font-weight: 600;
-  padding: 6px 10px;
+  padding: 7px 11px;
   border-radius: 6px;
 }
 
@@ -52,59 +52,59 @@ nav a:hover {
 
 main {
   max-width: 900px;
-  margin: 32px auto;
-  padding: 48px 56px 64px;
+  margin: 36px auto;
+  padding: 64px 64px 72px;
   background: #ffffff;
   border: 1px solid #e8eaed;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 h1 {
-  margin: 0 0 18px;
+  margin: 0 0 24px;
   font-size: 42px;
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
 
 h2 {
-  margin: 36px 0 10px;
+  margin: 42px 0 14px;
   font-size: 24px;
   line-height: 1.25;
   letter-spacing: -0.01em;
-  padding-bottom: 6px;
+  padding-bottom: 8px;
   border-bottom: 1px solid #f0f1f3;
 }
 
 p {
-  margin: 0 0 18px;
+  margin: 0 0 20px;
   color: var(--text);
   max-width: 72ch;
 }
 
 ul {
-  margin: 10px 0 24px 22px;
+  margin: 14px 0 28px 22px;
   max-width: 72ch;
 }
 
-li { margin: 8px 0; }
+li { margin: 10px 0; }
 
 hr {
   border: none;
   border-top: 1px solid #e8eaed;
-  margin: 32px 0;
+  margin: 40px 0;
 }
 
 footer {
-  border-top: 1px solid var(--line);
-  background: #ffffff;
-  margin-top: 48px;
+  border-top: 1px solid #dfe1e4;
+  background: var(--page-bg);
+  margin-top: 56px;
 }
 
 footer p {
   max-width: 900px;
   margin: 0 auto;
-  padding: 20px 24px;
+  padding: 24px 24px;
   color: var(--muted);
   font-size: 14px;
 }
