@@ -103,10 +103,10 @@ nav a.active {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Hero Section */
+/* Hero Section - Full Screen */
 .hero {
   position: relative;
-  min-height: 85vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,6 +115,7 @@ nav a.active {
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
+  padding: 40px 24px;
 }
 
 /* Dark overlay with vignette */
@@ -126,7 +127,7 @@ nav a.active {
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(ellipse at center, rgba(10, 15, 26, 0.2) 0%, rgba(10, 15, 26, 0.45) 100%);
+    radial-gradient(ellipse at center, rgba(10, 15, 26, 0.3) 0%, rgba(10, 15, 26, 0.6) 100%);
   z-index: 1;
 }
 
@@ -151,54 +152,69 @@ nav a.active {
   position: relative;
   z-index: 2;
   max-width: 1100px;
-  padding: 0 48px;
   text-align: center;
   color: var(--text-light);
 }
 
 .hero h1 {
-  font-size: 58px;
+  font-size: 44px;
   line-height: 1.15;
   letter-spacing: -0.025em;
-  margin: 0 0 28px;
+  margin: 0 0 20px;
   font-weight: 700;
   color: #ffffff;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
-.hero p {
-  font-size: 20px;
+.hero > .hero-content > p {
+  font-size: 18px;
   line-height: 1.6;
   color: var(--muted-light);
-  margin: 0 0 36px;
+  margin: 0 0 32px;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-.cta-button {
-  display: inline-block;
-  padding: 16px 40px;
-  font-size: 17px;
-  font-weight: 600;
-  color: #0f172a;
-  background: #ffffff;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+/* Hero Details Section */
+.hero-details {
+  margin-top: 24px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 28px 36px;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  color: var(--text);
 }
 
-.cta-button:hover {
-  background: var(--accent);
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(91, 163, 208, 0.4);
+.hero-details p {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.6;
 }
 
-/* Container and Panel */
+.hero-details p:last-child {
+  margin-bottom: 0;
+}
+
+.hero-details ul {
+  margin: 12px 0 16px 18px;
+  padding: 0;
+}
+
+.hero-details li {
+  margin: 7px 0;
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 14.5px;
+}
+
+/* Container and Panel (for other pages) */
 .container {
   max-width: var(--max);
   margin: 0 auto;
@@ -219,11 +235,9 @@ main {
   margin-top: 48px;
 }
 
-/* Homepage: floating panel effect */
+/* Hide panel on homepage */
 body.home .panel {
-  margin-top: -60px;
-  position: relative;
-  z-index: 3;
+  display: none;
 }
 
 h1 {
@@ -316,24 +330,29 @@ footer .container {
   }
   
   .hero {
-    min-height: 70vh;
+    min-height: 100vh;
+    padding: 24px 20px;
   }
   
   .hero-content {
-    padding: 0 24px;
+    padding: 0;
   }
   
   .hero h1 {
-    font-size: 38px;
+    font-size: 32px;
   }
   
-  .hero p {
-    font-size: 17px;
-  }
-  
-  .cta-button {
-    padding: 14px 32px;
+  .hero > .hero-content > p {
     font-size: 16px;
+  }
+  
+  .hero-details {
+    padding: 24px 28px;
+  }
+  
+  .hero-details p,
+  .hero-details li {
+    font-size: 14px;
   }
   
   .panel {
