@@ -126,6 +126,23 @@ nav a.active {
     z-index: 1;
 }
 
+/* CSS Grid Overlay Effect */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(0deg, rgba(91, 163, 208, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(91, 163, 208, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.4;
+    z-index: 1;
+    pointer-events: none;
+}
+
 .hero-content {
     position: relative;
     z-index: 2;
