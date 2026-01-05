@@ -546,5 +546,19 @@ footer .container {
   .panel p,
   .panel li {
     font-size: 14px;
+
+      /* Fix footer overlap on mobile */
+  body {
+    padding-bottom: 60px;
+  }
+
+  footer {
+    position: static !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    z-index: auto !important;
+    margin-top: 24px;
+  }
   }
 }
