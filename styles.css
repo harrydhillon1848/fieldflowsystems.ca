@@ -559,6 +559,12 @@ footer .container {
     right: auto !important;
     z-index: auto !important;
     margin-top: 24px;
+        padding: 16px 24px;
+  }
+
+      footer .container {
+    height: auto !important;
+    display: block !important;
   }
   }
 }
