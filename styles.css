@@ -502,3 +502,49 @@ footer .container {
 .demo-submit:active {
   transform: translateY(0);
 }
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  /* Allow scrolling on mobile */
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
+    overflow: auto;
+  }
+
+  /* Let main content scroll instead of being locked */
+  main {
+    overflow: visible;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  /* Hero should size to content, not force full viewport height */
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* General side padding for other pages/containers */
+  .container,
+  .panel {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Reduce hero and heading font sizes */
+  .hero h1,
+  h1 {
+    font-size: 30px;
+  }
+
+  .hero > .hero-content > p,
+  p,
+  .panel p,
+  .panel li {
+    font-size: 14px;
+  }
+}
