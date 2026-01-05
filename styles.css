@@ -546,6 +546,7 @@ footer .container {
   .panel p,
   .panel li {
     font-size: 14px;
+        }
 
       /* Fix footer overlap on mobile */
   body {
