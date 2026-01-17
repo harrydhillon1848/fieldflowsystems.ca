@@ -1,0 +1,193 @@
+name: FieldFlow Automation
+
+on:
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  apply_legal_pages:
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '/apply legal-pages'))
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Apply legal pages + footer links
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          TEMPLATE="contact.html"
+          if [ ! -f "$TEMPLATE" ]; then
+            echo "ERROR: contact.html not found at repo root. Aborting."
+            exit 1
+          fi
+
+          node <<'NODE'
+          const fs = require("fs");
+          const path = require("path");
+
+          const TEMPLATE = "contact.html";
+          const footerSnippet = `
+<a href="/privacy-policy.html">Privacy Policy</a> |
+<a href="/terms-disclaimer.html">Terms &amp; Disclaimer</a> |
+<a href="/data-retention.html">Data Retention</a>
+`.trim();
+
+          function replaceTitle(html, newTitle) {
+            return html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${newTitle}</title>`);
+          }
+
+          function replaceMainInner(html, newInner) {
+            const m = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i);
+            if (!m) {
+              throw new Error("No <main>...</main> found in template.");
+            }
+            const mainOpen = html.match(/<main\b[^>]*>/i)[0];
+            return html.replace(/<main\b[^>]*>[\s\S]*?<\/main>/i, `${mainOpen}\n${newInner}\n</main>`);
+          }
+
+          function ensureFooterLinks(html) {
+            if (html.includes("/privacy-policy.html") && html.includes("/terms-disclaimer.html") && html.includes("/data-retention.html")) {
+              return html;
+            }
+            if (!/<footer\b/i.test(html)) {
+              throw new Error("No <footer> found in file.");
+            }
+            return html.replace(/<\/footer>/i, `\n${footerSnippet}\n</footer>`);
+          }
+
+          function writeFromTemplate(outFile, titleText, mainHtml) {
+            let html = fs.readFileSync(TEMPLATE, "utf8");
+            html = replaceTitle(html, `${titleText} | FieldFlow Systems`);
+            html = replaceMainInner(html, mainHtml);
+            html = ensureFooterLinks(html);
+            fs.writeFileSync(outFile, html, "utf8");
+          }
+
+          const privacyMain = `
+<h1>Privacy Policy</h1>
+<p><strong>Effective Date:</strong> January 1, 2026</p>
+
+<p>FieldFlow Systems respects your privacy and is committed to protecting the personal information you share with us.</p>
+
+<h2>1. Information We Collect</h2>
+<p>We collect personal information that you voluntarily provide when you submit a form on our website. This may include your name, email address, company name, role, and any additional information you choose to share related to your interest in a demo or our services.</p>
+
+<h2>2. How We Use Your Information</h2>
+<p>We use the information collected to:</p>
+<ul>
+  <li>Respond to inquiries and demo requests</li>
+  <li>Communicate regarding our services or updates</li>
+  <li>Improve our internal workflows and service offerings</li>
+</ul>
+
+<h2>3. Data Security</h2>
+<p>We take reasonable technical and organizational measures to protect your information against unauthorized access, disclosure, or misuse. Access to collected data is limited to authorized FieldFlow Systems operators only.</p>
+
+<h2>4. Sharing of Information</h2>
+<p>We do not sell, rent, or trade personal information. Information may be processed using trusted service providers strictly for operational purposes, and only where confidentiality is maintained.</p>
+
+<h2>5. Data Retention</h2>
+<p>Personal information is retained only for as long as necessary to fulfill its purpose or to support legitimate business operations. Retention specifics are outlined in our Data Retention Policy.</p>
+
+<h2>6. Changes to This Policy</h2>
+<p>This Privacy Policy may be updated periodically. The latest version will always be available on this page.</p>
+
+<h2>Contact</h2>
+<p>For privacy-related questions, contact us at:<br>
+<a href="mailto:hello@fieldflowsystems.ca">hello@fieldflowsystems.ca</a></p>
+`.trim();
+
+          const termsMain = `
+<h1>Terms &amp; Disclaimer</h1>
+
+<p>FieldFlow Systems provides digital workflow, documentation, and operational support tools intended to assist organizations in structuring internal processes.</p>
+
+<h2>1. No Regulatory or Legal Advice</h2>
+<p>FieldFlow Systems does not provide legal, regulatory, or compliance certification services. Use of our tools does not replace or guarantee compliance with any regulatory authority, including but not limited to Transport Canada or other governing bodies.</p>
+
+<h2>2. User Responsibility</h2>
+<p>Customers and users are solely responsible for ensuring that their operations, procedures, and safety systems meet applicable legal and regulatory requirements.</p>
+
+<h2>3. Service Availability</h2>
+<p>All tools, demos, and materials are provided “as is” and may change without notice. FieldFlow Systems makes no warranties regarding uninterrupted availability or fitness for a specific purpose.</p>
+
+<h2>4. Limitation of Liability</h2>
+<p>FieldFlow Systems shall not be held liable for any direct or indirect damages arising from the use or inability to use our services.</p>
+
+<p>By using this website or our tools, you acknowledge and accept these terms.</p>
+`.trim();
+
+          const retentionMain = `
+<h1>Data Retention Policy</h1>
+
+<p>FieldFlow Systems maintains a disciplined and minimal data retention approach aligned with operational necessity and privacy responsibility.</p>
+
+<h2>1. Data Collected</h2>
+<p>We may retain:</p>
+<ul>
+  <li>Demo request submissions (name, email, company, role, interest)</li>
+  <li>Operational or workflow data only when explicitly provided during pilots or engagements</li>
+</ul>
+
+<h2>2. Retention Periods</h2>
+<ul>
+  <li>Demo and inquiry data: retained for up to 12 months</li>
+  <li>Client or pilot operational data: retained as defined by engagement scope or agreement</li>
+</ul>
+
+<h2>3. Access Control</h2>
+<p>Access to retained data is limited to authorized FieldFlow Systems operators only.</p>
+
+<h2>4. Data Deletion</h2>
+<p>Data is deleted or anonymized once it is no longer required for operational, engagement, or legal purposes.</p>
+`.trim();
+
+          writeFromTemplate("privacy-policy.html", "Privacy Policy", privacyMain);
+          writeFromTemplate("terms-disclaimer.html", "Terms & Disclaimer", termsMain);
+          writeFromTemplate("data-retention.html", "Data Retention Policy", retentionMain);
+
+          function walk(dir) {
+            const out = [];
+            for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
+              const p = path.join(dir, ent.name);
+              if (ent.isDirectory()) {
+                if (ent.name === ".git" || ent.name === "node_modules") continue;
+                out.push(...walk(p));
+              } else if (ent.isFile() && ent.name.toLowerCase().endsWith(".html")) {
+                out.push(p);
+              }
+            }
+            return out;
+          }
+
+          const htmlFiles = walk(process.cwd());
+          for (const f of htmlFiles) {
+            let html = fs.readFileSync(f, "utf8");
+            try {
+              html = ensureFooterLinks(html);
+              fs.writeFileSync(f, html, "utf8");
+            } catch (e) {}
+          }
+
+          console.log("Legal pages created and footer links applied.");
+          NODE
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Add legal pages and footer links"
+          title: "Add legal pages and footer links"
+          body: "Automated change: adds privacy policy, terms & disclaimer, data retention pages, and footer links sitewide."
+          branch: "automation/legal-pages"
+          base: "main"
