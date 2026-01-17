@@ -181,7 +181,7 @@ jobs:
           }
 
           console.log("Legal pages created and footer links applied.");
-          NODE
+                NODE
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
