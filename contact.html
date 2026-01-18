@@ -1,52 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Contact | FieldFlow Systems</title>
-  <style>
-    /* Modal Overlay */
-    .demo-modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(10, 15, 26, 0.85);
-      backdrop-filter: blur(4px);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-    .demo-modal-overlay.active {
-      display: flex;
-    }
-    /* Modal Container */
-    #demo-modal {
-      background: linear-gradient(180deg, #0f1621 0%, #1a202c 100%);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 12px;
-      max-width: 600px;
-      width: 90%;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 40px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Field Flow Systems</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Contact FieldFlow Systems</h1>
-  <!-- Contact form or content here -->
-  <footer>
-    <nav>
-      <a href="privacy-policy.html">Privacy Policy</a> |
-      <a href="terms-disclaimer.html">Terms &amp; Disclaimer</a> |
-      <a href="data-retention.html">Data Retention</a>
-    </nav>
-    <div>&copy; FieldFlow Systems</div>
-  </footer>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Product</a></li>
+                <li><a href="engagement.html">Engagement</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="contact-section">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you! Please fill out the form below and we'll get back to you as soon as possible.</p>
+            <form class="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Field Flow Systems. All rights reserved.</p>
+    </footer>
 </body>
 </html>
