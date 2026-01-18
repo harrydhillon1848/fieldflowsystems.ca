@@ -8,30 +8,145 @@ Version: 1.0
 */
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f5f5;
-    color: #222;
-}
-
-header {
-    background: #0a3d62;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0a192f;
+  color: #fff;
 }
 
 nav {
-    background: #3c6382;
-    padding: 10px 0;
-    text-align: center;
+  background: #101c36;
+  padding: 0 0 0 0;
+  text-align: center;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 30px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+  display: inline-block;
+}
+nav a.active, nav a:focus, nav a:hover {
+  background: #fff;
+  color: #101c36;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-    transition: color 0.2s;
+footer {
+  background: transparent;
+  color: #fff;
+  text-align: left;
+  padding: 24px 40px 24px 40px;
+  font-size: 1rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.centered-panel {
+  background: rgba(16,28,54,0.98);
+  border-radius: 12px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  max-width: 900px;
+  margin: 100px auto 0 auto;
+  padding: 60px 60px 60px 60px;
+  text-align: left;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.centered-panel h1, .centered-panel h2, .centered-panel h3 {
+  color: #fff;
+  margin-bottom: 24px;
+  font-weight: 700;
+  font-size: 2.2rem;
+}
+
+.centered-panel p, .centered-panel li {
+  color: #fff;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* Home page hero background */
+.hero-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: url('https://fieldflowsystems.ca/assets/terminal-night.jpg') center center/cover no-repeat fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  color: #fff;
+  background: rgba(16,28,54,0.35);
+}
+.hero-content h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #fff;
+}
+.hero-content p, .hero-content ul {
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+/* Remove all modal-related CSS */
+/* (No .modal, .modal-backdrop, .modal-open, .modal-content, .modal-header, .modal-footer, etc.) */
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .centered-panel {
+    max-width: 98vw;
+    padding: 32px 8vw 32px 8vw;
+  }
+  nav a {
+    margin: 0 10px;
+    padding: 10px 10px;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .centered-panel {
+    margin: 60px 0 0 0;
+    padding: 18px 2vw 18px 2vw;
+    min-height: 320px;
+  }
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+  nav {
+    flex-direction: column;
+    height: auto;
+    padding: 0;
+  }
+  nav a {
+    margin: 0 2px;
+    padding: 8px 4px;
+    font-size: 0.95rem;
+  }
+  footer {
+    font-size: 0.9rem;
+    padding: 12px 10px 12px 10px;
+  }
 }
