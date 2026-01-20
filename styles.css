@@ -106,7 +106,8 @@ nav a.active {
 /* Hero Section - Full Screen, No Scroll (Homepage only) */
 .hero {
   position: relative;
-  height: 100vh;
+  min-height: calc(100vh - 72px);
+padding-top: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,7 +116,7 @@ nav a.active {
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
-  padding: 24px;
+  padding: 24px 24px 24px 24px;
 }
 
 /* Dark overlay with vignette */
