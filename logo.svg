@@ -2,7 +2,7 @@
 
   <!-- Orange pentagon icon -->
   <polygon
-    points="50,8 92,30 92,72 50,94 8,72 8,30"
+        points="50,5 93,34 77,90 23,90 7,34"
     fill="#E8620A"
     stroke="#C4500A"
     stroke-width="2.5"
