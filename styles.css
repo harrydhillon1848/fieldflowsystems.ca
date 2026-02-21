@@ -65,14 +65,14 @@ header {
   align-items: center;
   text-decoration: none;
   gap: 0;
-  display: none;
+  
 }
 
 .logo img {
-  height: 42px;
+    height: 52px;
   width: auto;
   display: block;
-  filter: brightness(0) invert(1);
+    filter: none;
   background: transparent;
 }
 
