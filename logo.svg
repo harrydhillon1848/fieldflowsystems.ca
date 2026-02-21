@@ -1,63 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120" width="500" height="120" role="img" aria-label="FieldFlow Systems logo">
-  <!-- Pentagon (approx 100x100), centered vertically within y=10..110 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 100" width="420" height="100" role="img" aria-label="FieldFlow Systems logo">
+
+  <!-- Orange pentagon icon -->
   <polygon
-    points="60,10 105,38 88,102 32,102 15,38"
+    points="50,8 92,30 92,72 50,94 8,72 8,30"
     fill="#E8620A"
     stroke="#C4500A"
-    stroke-width="3"
+    stroke-width="2.5"
     stroke-linejoin="round"
   />
 
-  <!-- FF monogram (white) inside pentagon -->
-  <!-- Left F -->
-  <path fill="#FFFFFF" d="
-    M 32 32
-    H 70
-    Q 76 32 76 38
-    V 40
-    Q 76 46 70 46
-    H 48
-    V 58
-    H 67
-    Q 73 58 73 64
-    V 66
-    Q 73 72 67 72
-    H 48
-    V 90
-    Q 48 96 42 96
-    H 40
-    Q 32 96 32 88
-    Z
-  "/>
+  <!-- Letter F (left) - white rects inside pentagon -->
+  <!-- Vertical stem -->
+  <rect x="24" y="28" width="8" height="44" fill="#FFFFFF" rx="1"/>
+  <!-- Top horizontal bar -->
+  <rect x="24" y="28" width="22" height="8" fill="#FFFFFF" rx="1"/>
+  <!-- Middle horizontal bar -->
+  <rect x="24" y="47" width="17" height="7" fill="#FFFFFF" rx="1"/>
 
-  <!-- Right F -->
-  <path fill="#FFFFFF" d="
-    M 58 32
-    H 96
-    Q 102 32 102 38
-    V 40
-    Q 102 46 96 46
-    H 74
-    V 58
-    H 93
-    Q 99 58 99 64
-    V 66
-    Q 99 72 93 72
-    H 74
-    V 90
-    Q 74 96 68 96
-    H 66
-    Q 58 96 58 88
-    Z
-  "/>
+  <!-- Letter F (right) - white rects inside pentagon -->
+  <!-- Vertical stem -->
+  <rect x="52" y="28" width="8" height="44" fill="#FFFFFF" rx="1"/>
+  <!-- Top horizontal bar -->
+  <rect x="52" y="28" width="22" height="8" fill="#FFFFFF" rx="1"/>
+  <!-- Middle horizontal bar -->
+  <rect x="52" y="47" width="17" height="7" fill="#FFFFFF" rx="1"/>
 
-  <!-- Node dots (navy) on crossbars -->
-  <circle cx="54" cy="65" r="4.2" fill="#0f1e36"/>
-  <circle cx="79" cy="65" r="4.2" fill="#0f1e36"/>
-  <circle cx="54" cy="52" r="4.2" fill="#0f1e36"/>
-  <circle cx="79" cy="52" r="4.2" fill="#0f1e36"/>
+  <!-- Node dots on middle crossbars (navy) -->
+  <circle cx="46" cy="50" r="3.5" fill="#0f1e36"/>
+  <circle cx="74" cy="50" r="3.5" fill="#0f1e36"/>
 
   <!-- Wordmark -->
-  <text x="130" y="66" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="48" font-weight="700">FieldFlow</text>
-  <text x="132" y="92" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14" letter-spacing="4">SYSTEMS</text>
+  <text x="112" y="58" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="42" font-weight="700" dominant-baseline="middle">FieldFlow</text>
+  <text x="114" y="80" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="13" letter-spacing="4" dominant-baseline="middle">SYSTEMS</text>
+
 </svg>
